@@ -1,3 +1,9 @@
+## Description
+
+A future research project meant to generate high quality training data for AI models that can fix code autonomously. 
+
+This is meant to be a tool to generate high quality synthetic data in the form of source code.
+
 ## High level overview
 
 1. Map all CWEs to specific code examples of {vulnerable, patched} code pairs
