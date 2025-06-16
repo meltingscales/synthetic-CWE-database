@@ -1,0 +1,1 @@
+This is an example of the folder structure that the `ephemeral-data` directory will take.

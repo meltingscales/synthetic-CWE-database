@@ -11,6 +11,30 @@ This is meant to be a tool to generate high quality synthetic data in the form o
 3. Validate pairs by hand and "approve" them for use as synthetic data
 4. Use synthetic data to train high-quality secure coding models
 
+## Project Structure
+
+```
+.
+├── ephemeral-data/           # Main data directory
+│   └── generated-cwes/       # CWE-specific examples
+│       └── CWE-XXX/          # Individual CWE examples
+│           ├── cwe-manifest.json
+│           └── 1.code/       # Code examples
+│               ├── code-manifest.json
+│               ├── secure/     # Patched code
+│               ├── vulnerable/ # Vulnerable code
+│               └── payload/    # Attack payloads
+├── ephemeral-data.example/  # Example data structure
+└── prompts/                 # LLM prompts for generation
+```
+
+## Data Organization
+
+Each CWE example contains:
+- A manifest file `cwe-manifest.json` describing the CWE and its examples
+- Code examples organized into secure, vulnerable, and payload variants
+- A code manifest `code-manifest.json` describing the files and their purposes
+
 ## Sources
 
 - https://arxiv.org/html/2504.16584v1#bib.bib24
