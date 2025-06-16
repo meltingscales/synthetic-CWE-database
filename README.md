@@ -35,6 +35,26 @@ Each CWE example contains:
 - Code examples organized into secure, vulnerable, and payload variants
 - A code manifest `code-manifest.json` describing the files and their purposes
 
+## Developing
+
+    python3 -m virtualenv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+
+## Actions
+
+### Format code
+
+    python3 -m black SyntheticCWEDatabase
+
+### Run unit tests
+
+    python3 -m unittest discover SyntheticCWEDatabase
+
+### Fetch CWE data
+
+    python3 -m SyntheticCWEDatabase.fetchcwedata
+
 ## Sources
 
 - https://arxiv.org/html/2504.16584v1#bib.bib24

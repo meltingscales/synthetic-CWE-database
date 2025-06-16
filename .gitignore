@@ -1,1 +1,3 @@
 ephemeral-data/
+.venv/
+__pycache__/
