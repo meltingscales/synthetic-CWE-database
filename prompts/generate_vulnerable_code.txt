@@ -1,0 +1,5 @@
+Generate code that's vulnerable to CWE {{CWE_ID}}, which can be described as "{{CWE_DESCRIPTION}}".
+
+Make sure the code is written in {{LANGUAGE}}.
+
+Do not include backticks or other formatting, output only source code.

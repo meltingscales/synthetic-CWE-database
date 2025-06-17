@@ -1,4 +1,4 @@
-Generate code that's vulnerable to CWE {{CWE_ID}}, which can be described as {{CWE_DESCRIPTION}}.
+Generate code that defends against CWE {{CWE_ID}}, which can be described as "{{CWE_DESCRIPTION}}".
 
 Make sure the code is written in {{LANGUAGE}}.
 

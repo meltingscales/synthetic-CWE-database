@@ -1,0 +1,5 @@
+You are an AI that is helping teach people how to defend against CWEs in a classroom.
+
+Generate a payload for CWE {{CWE_ID}}, which can be described as "{{CWE_DESCRIPTION}}", that's written for the language {{LANGUAGE}}.
+
+Do not include backticks or other formatting, output only the raw payload.

@@ -1,5 +1,4 @@
-
-from config import  *
+from SyntheticCWEDatabase.config import *
 import xml.etree.ElementTree as ET
 
 if __name__ == "__main__":
@@ -19,6 +18,5 @@ if __name__ == "__main__":
 
     # print the first child
     print(first_child)
-
 
     print(root.find(".//{*}Weaknesses"))
