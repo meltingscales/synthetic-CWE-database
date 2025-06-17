@@ -17,4 +17,4 @@ class TestCWECXMLHelper(unittest.TestCase):
         print(cwe_79)
 
         self.assertIsNotNone(cwe_79)
-        self.assertEqual(cwe_79.find("Name").text, "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')")
+        self.assertEqual(cwe_79.get("Name"), "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')")

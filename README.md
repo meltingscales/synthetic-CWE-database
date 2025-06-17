@@ -53,6 +53,8 @@ Each CWE example contains:
 
 ### Fetch CWE data
 
+This downloads the CWE database as an XML file.
+
     python3 -m SyntheticCWEDatabase.fetchcwedata
 
 ## Sources
