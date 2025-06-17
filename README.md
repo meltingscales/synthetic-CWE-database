@@ -65,3 +65,7 @@ This downloads the CWE database as an XML file.
 
 - https://arxiv.org/html/2504.16584v1#bib.bib24
 - https://cwe.mitre.org/data/downloads.html
+
+## Code coverage
+
+[![codecov](https://codecov.io/gh/meltingscales/synthetic-CWE-database/graph/badge.svg?token=HJMTQX88TA)](https://codecov.io/gh/meltingscales/synthetic-CWE-database)
