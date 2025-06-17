@@ -20,6 +20,9 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Download CWEC XML
+        run: python3 -m SyntheticCWEDatabase.fetchcwedata
+
       - name: Run tests
         run: pytest SyntheticCWEDatabase/tests --cov --cov-branch --cov-report=xml
 
