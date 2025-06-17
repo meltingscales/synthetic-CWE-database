@@ -51,6 +51,10 @@ Each CWE example contains:
 
     python3 -m unittest discover SyntheticCWEDatabase
 
+### Run code coverage
+
+    pytest SyntheticCWEDatabase/tests --cov --cov-branch --cov-report=xml
+
 ### Fetch CWE data
 
 This downloads the CWE database as an XML file.
