@@ -1,0 +1,43 @@
+# List available commands
+default:
+    @just --list
+
+# Install dependencies
+install:
+    pip install -r requirements.txt
+
+# Run tests
+test:
+    pytest SyntheticCWEDatabase/tests
+
+# Run tests with coverage
+test-cov:
+    pytest SyntheticCWEDatabase/tests --cov --cov-branch --cov-report=term-missing
+
+# Run tests without AI tests
+test-no-ai:
+    SKIP_AI_TESTS=true pytest SyntheticCWEDatabase/tests
+
+# Download CWE data
+fetch-cwe:
+    python3 -m SyntheticCWEDatabase.fetchcwedata
+
+# Generate code examples for a specific CWE
+generate-cwe cwe_id language="python":
+    python3 -m SyntheticCWEDatabase.generate --cwe-id {{cwe_id}} --language {{language}}
+
+# Clean up generated files
+clean:
+    rm -rf ephemeral-data/generated-cwes/*
+
+# Format code
+fmt:
+    black SyntheticCWEDatabase/
+
+# Lint code
+lint:
+    flake8 SyntheticCWEDatabase/
+    mypy SyntheticCWEDatabase/
+
+# Run all checks
+check: fmt lint test 

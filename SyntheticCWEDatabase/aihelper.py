@@ -7,7 +7,9 @@ class AIHelper:
         self.model_name = model_name
 
     def generate(self, prompt: str):
-        response: ChatResponse = chat(model=self.model_name, messages=[{"role": "user", "content": prompt}])
+        response: ChatResponse = chat(
+            model=self.model_name, messages=[{"role": "user", "content": prompt}]
+        )
         return response.message.content
 
     @staticmethod

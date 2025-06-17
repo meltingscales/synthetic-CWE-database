@@ -1,5 +1,7 @@
 ephemeral-data/
 
+.secret.env
+
 .venv/
 
 __pycache__/

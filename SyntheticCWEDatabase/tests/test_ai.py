@@ -1,21 +1,28 @@
 from ollama import chat
 
+from SyntheticCWEDatabase.config import config
 from SyntheticCWEDatabase.aihelper import AIHelper
 import unittest
 import os
 
 
-@unittest.skipIf(os.getenv("SKIP_AI_TESTS") == "true", "Skipping AI tests due to environment variable SKIP_AI_TESTS=true")
+@unittest.skipIf(
+    os.getenv("SKIP_AI_TESTS") == "true",
+    "Skipping AI tests due to environment variable SKIP_AI_TESTS=true",
+)
 class TestAI(unittest.TestCase):
 
     def setUp(self):
 
         # self.ai_helper = AIHelper(model_name="deepseek-r1:1.5b")
         # self.ai_helper = AIHelper(model_name="llama3.2:1b")
-        self.ai_helper = AIHelper(model_name="hf.co/second-state/Yi-1.5-9B-Chat-GGUF:Q2_K")
+        self.ai_helper = AIHelper(model_name=config["MODEL_NAME"])
 
     def test_simple_ollama_call(self):
-        response = chat(model=self.ai_helper.model_name, messages=[{"role": "user", "content": "Hello, how are you?"}])
+        response = chat(
+            model=self.ai_helper.model_name,
+            messages=[{"role": "user", "content": "Hello, how are you?"}],
+        )
         print(response)
         self.assertIsNotNone(response)
         self.assertIn("I'm", response.message.content)

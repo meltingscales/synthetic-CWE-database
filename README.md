@@ -43,23 +43,25 @@ Each CWE example contains:
 
 ## Actions
 
+Run `just` to list.
+
 ### Format code
 
-    python3 -m black SyntheticCWEDatabase
+    just fmt
 
 ### Run unit tests
 
-    python3 -m unittest discover SyntheticCWEDatabase
+    just test
 
-### Run code coverage
+### Run tests with code coverage
 
-    pytest SyntheticCWEDatabase/tests --cov --cov-branch --cov-report=xml
+    just test-cov
 
 ### Fetch CWE data
 
 This downloads the CWE database as an XML file.
 
-    python3 -m SyntheticCWEDatabase.fetchcwedata
+    just fetch-cwe
 
 ## Sources
 
