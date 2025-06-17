@@ -69,3 +69,7 @@ This downloads the CWE database as an XML file.
 ## Code coverage
 
 [![codecov](https://codecov.io/gh/meltingscales/synthetic-CWE-database/graph/badge.svg?token=HJMTQX88TA)](https://codecov.io/gh/meltingscales/synthetic-CWE-database)
+
+### Treemap graph
+
+![](https://codecov.io/gh/meltingscales/synthetic-CWE-database/graphs/tree.svg?token=HJMTQX88TA)

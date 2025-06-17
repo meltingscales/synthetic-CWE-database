@@ -2,4 +2,8 @@ Generate code that's vulnerable to CWE {{CWE_ID}}, which can be described as "{{
 
 Make sure the code is written in {{LANGUAGE}}.
 
-Do not include backticks or other formatting, output only source code.
+Wrap the code in a code block as shown below:
+
+```{{LANGUAGE}}
+<payload>
+```

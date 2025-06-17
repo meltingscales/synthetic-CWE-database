@@ -5,10 +5,9 @@ from ollama import ChatResponse
 class AIHelper:
     def __init__(self, model_name: str):
         self.model_name = model_name
-        self.client = chat(model=self.model_name)
 
     def generate(self, prompt: str):
-        response: ChatResponse = self.client.chat(prompt)
+        response: ChatResponse = chat(model=self.model_name, messages=[{"role": "user", "content": prompt}])
         return response.message.content
 
     @staticmethod
