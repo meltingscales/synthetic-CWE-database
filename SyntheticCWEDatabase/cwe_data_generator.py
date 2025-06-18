@@ -11,14 +11,13 @@ import json
 import uuid
 
 
-def generate_one_cwe(cwe_id: int, language: str):
+def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper):
 
     # TODO make helper methods to set up files and folders
 
     print(f"Generating CWE-{cwe_id}")
 
     xml_helper = CWECXMLHelper(cwec_xml_file_path)
-    ai_helper = AIHelper(model_name=config["MODEL_NAME"])
 
     cwe_xml = xml_helper.get_cwe_by_id(cwe_id)
 
@@ -67,6 +66,7 @@ def generate_one_cwe(cwe_id: int, language: str):
         json.dump(
             cwe_manifest,
             f,
+            indent=4,
         )
 
     # create a vulnerable file
@@ -116,4 +116,5 @@ def generate_one_cwe(cwe_id: int, language: str):
                 "human-validation-notes": None,
             },
             f,
+            indent=4,
         )

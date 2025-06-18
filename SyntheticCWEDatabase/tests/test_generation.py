@@ -1,8 +1,11 @@
+import random
 from SyntheticCWEDatabase.cwec_xml_helper import CWECXMLHelper
 from SyntheticCWEDatabase.cwe_data_generator import generate_one_cwe
 import unittest
 import os
 import shutil
+from SyntheticCWEDatabase.aihelper import AIHelper, AIHelperDummy
+from SyntheticCWEDatabase.config import config
 
 
 class TestGeneration(unittest.TestCase):
@@ -22,16 +25,25 @@ class TestGeneration(unittest.TestCase):
             126,  # CWE-126: Buffer Over-read
         ]
 
-    def tearDown(self):
-        # delete the generated-cwes folder
+        self.ai_helper = AIHelper(model_name=config["MODEL_NAME"])
+
+        if config["USE_DUMMY_AI"] == "true":
+            self.ai_helper = AIHelperDummy(model_name="dummy")
+
+        # delete the generated-cwes folder if it exists
         try:
             shutil.rmtree("ephemeral-data/generated-cwes")
         except FileNotFoundError:
             pass
 
     def test_small_generation(self):
+
+        # for all cwes in our list,
         for cwe_id in self.test_cwes_to_generate:
-            generate_one_cwe(cwe_id, "php")
+
+            # between 2 and 5 code examples per cwe
+            for _ in range(random.randint(2, 5)):
+                generate_one_cwe(cwe_id, "php", self.ai_helper)
 
             # assert that a folder has been created with the name of the cwe
             self.assertTrue(

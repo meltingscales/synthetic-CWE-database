@@ -12,7 +12,7 @@ class TestAI(unittest.TestCase):
 
     def setUp(self):
 
-        self.skip_ai_tests = os.getenv("USE_DUMMY_AI") == "true"
+        self.skip_ai_tests = config["USE_DUMMY_AI"] == "true"
         if self.skip_ai_tests:
             self.ai_helper = AIHelperDummy(model_name="dummy")
             print("Using dummy AI")
@@ -21,7 +21,7 @@ class TestAI(unittest.TestCase):
             print(f"Using AI model: {self.ai_helper.model_name}")
 
     @unittest.skipIf(
-        os.getenv("USE_DUMMY_AI") == "true",
+        config["USE_DUMMY_AI"] == "true",
         "Skipping internal ollama call due to environment variable USE_DUMMY_AI=true",
     )
     def test_simple_ollama_call(self):
