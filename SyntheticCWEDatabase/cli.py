@@ -9,7 +9,12 @@ import shutil
 
 def destroy_generated_data():
     # delete the generated-cwes folder
-    shutil.rmtree(generated_cwes_output_folder)
+    try:
+        shutil.rmtree(generated_cwes_output_folder)
+        print(f"Deleted {generated_cwes_output_folder}")
+    except FileNotFoundError:
+        print(f"Folder {generated_cwes_output_folder} not found")
+        pass
 
 
 def cli_main():

@@ -2,9 +2,8 @@ from SyntheticCWEDatabase.cwec_xml_helper import CWECXMLHelper
 from SyntheticCWEDatabase.config import (
     cwec_xml_file_path,
     generated_cwes_output_folder,
-    config,
 )
-from SyntheticCWEDatabase.aihelper import AIHelper, AIHelperDummy
+from SyntheticCWEDatabase.aihelper import AIHelper
 
 import os
 import json

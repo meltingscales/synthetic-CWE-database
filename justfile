@@ -23,12 +23,12 @@ fetch-cwe:
     python3 -m SyntheticCWEDatabase.fetchcwedata
 
 # Generate code examples for a specific CWE
-generate-cwe cwe_id language="python":
-    python3 -m SyntheticCWEDatabase.generate --cwe-id {{cwe_id}} --language {{language}}
+generate-cwe cwe_id="79" language="python":
+    python3 -m SyntheticCWEDatabase --generate-data --cwe-id {{cwe_id}} --language {{language}}
 
 # Clean up generated files
 clean:
-    rm -rf ephemeral-data/generated-cwes/*
+    python3 -m SyntheticCWEDatabase --destroy-generated-data
 
 # Format code
 fmt:
