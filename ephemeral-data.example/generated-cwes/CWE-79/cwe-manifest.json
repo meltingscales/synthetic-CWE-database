@@ -2,6 +2,9 @@
     "cwe-id": "CWE-79",
     "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
     "generated-code-folders": [
-        "1.code"
+        {
+            "id": "1234-5678",
+            "path": "1234-5678.code"
+        }
     ]
 }

@@ -14,9 +14,9 @@ test:
 test-cov:
     pytest SyntheticCWEDatabase/tests --cov --cov-branch --cov-report=term-missing
 
-# Run tests without AI tests
-test-no-ai:
-    SKIP_AI_TESTS=true pytest SyntheticCWEDatabase/tests
+# Run tests with dummy AI
+test-dummy-ai:
+    USE_DUMMY_AI=true pytest SyntheticCWEDatabase/tests
 
 # Download CWE data
 fetch-cwe:

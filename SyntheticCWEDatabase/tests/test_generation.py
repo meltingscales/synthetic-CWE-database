@@ -1,4 +1,4 @@
-from SyntheticCWEDatabase.cwecxmlhelper import CWECXMLHelper
+from SyntheticCWEDatabase.cwec_xml_helper import CWECXMLHelper
 from SyntheticCWEDatabase.cwe_data_generator import generate_one_cwe
 import unittest
 import os

@@ -1,0 +1,11 @@
+{
+    "language": "php",
+    "cwe-id": "CWE-79",
+    "generated-files": [
+        {"type": "secure-code", "path": "secure/index.php"},
+        {"type": "vulnerable-code", "path": "vulnerable/index.php"},
+        {"type": "payload", "path": "payload/payload"}
+    ],
+    "validated-by-human": true,
+    "human-validation-notes": "This is a test note"
+}

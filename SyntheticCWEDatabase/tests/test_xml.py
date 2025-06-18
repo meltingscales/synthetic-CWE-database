@@ -1,4 +1,4 @@
-from SyntheticCWEDatabase.cwecxmlhelper import CWECXMLHelper
+from SyntheticCWEDatabase.cwec_xml_helper import CWECXMLHelper
 import unittest
 
 

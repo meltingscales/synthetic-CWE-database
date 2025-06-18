@@ -39,3 +39,28 @@ class AIHelper:
         prompt = prompt.replace("{{CWE_DESCRIPTION}}", cwe_description)
         prompt = prompt.replace("{{LANGUAGE}}", language)
         return self.generate(prompt)
+
+
+class AIHelperDummy(AIHelper):
+    """Class used to test AIHelper without actually using an AI model."""
+
+    def __init__(self, model_name: str):
+        super().__init__(model_name)
+
+    def generate(self, prompt: str):
+        return f"""{self.__class__.__name__} Example response:
+{prompt}"""
+
+    def generate_vulnerable_code(
+        self, cwe_id: int, cwe_description: str, language: str
+    ):
+        return f"""{self.__class__.__name__} Example vulnerable code:
+{cwe_id} {cwe_description} {language}"""
+
+    def generate_secure_code(self, cwe_id: int, cwe_description: str, language: str):
+        return f"""{self.__class__.__name__} Example secure code:
+{cwe_id} {cwe_description} {language}"""
+
+    def generate_payload(self, cwe_id: int, cwe_description: str, language: str):
+        return f"""{self.__class__.__name__} Example payload:
+{cwe_id} {cwe_description} {language}"""
