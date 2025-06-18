@@ -11,7 +11,7 @@ import json
 import uuid
 
 
-def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper):
+def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper) -> str:
     print(f"Generating CWE-{cwe_id}")
 
     xml_helper = CWECXMLHelper(cwec_xml_file_path)
@@ -145,3 +145,5 @@ def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper):
             f,
             indent=4,
         )
+
+        return cwe_manifest_file

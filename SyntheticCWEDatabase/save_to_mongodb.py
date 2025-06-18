@@ -5,5 +5,5 @@ import os
 import json
 
 
-def load_to_mongodb():
-    pass
+def save_to_mongodb():
+    pass  # TODO implement me
