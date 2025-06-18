@@ -12,9 +12,6 @@ import uuid
 
 
 def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper):
-
-    # TODO make helper methods to set up files and folders
-
     print(f"Generating CWE-{cwe_id}")
 
     xml_helper = CWECXMLHelper(cwec_xml_file_path)
@@ -59,6 +56,7 @@ def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper):
         {
             "id": code_example_uuid,
             "path": code_example_folder,
+            "manifest-path": os.path.join(code_example_folder, "code-manifest.json"),
         }
     )
 
@@ -70,24 +68,34 @@ def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper):
         )
 
     # create a vulnerable file
-    # TODO generate the vulnerable file with the AI
-    vulnerable_file = os.path.join(vulnerable_folder, "index.php")
+    vulnerable_file = os.path.join(vulnerable_folder, "vulnerable-code.txt")
+    vulnerable_file_content = ai_helper.generate_vulnerable_code(
+        cwe_id,
+        cwe_xml.get("Name"),
+        language,
+    )
     with open(vulnerable_file, "w") as f:
-        f.write("<?php echo $_GET['username']; ?>")
+        f.write(vulnerable_file_content)
 
     # create a secure file
-    # TODO generate the secure file with the AI
-    secure_file = os.path.join(secure_folder, "index.php")
+    secure_file_content = ai_helper.generate_secure_code(
+        cwe_id,
+        cwe_xml.get("Name"),
+        language,
+    )
+    secure_file = os.path.join(secure_folder, "secure-code.txt")
     with open(secure_file, "w") as f:
-        f.write("<?php echo htmlspecialchars($_GET['username']); ?>")
+        f.write(secure_file_content)
 
     # create a payload file
-    # TODO generate the payload file with the AI
     payload_file = os.path.join(payload_folder, "payload.txt")
+    payload_file_content = ai_helper.generate_payload(
+        cwe_id,
+        cwe_xml.get("Name"),
+        language,
+    )
     with open(payload_file, "w") as f:
-        f.write(
-            "<script language='javascript'>alert('You've been attacked!');</script>"
-        )
+        f.write(payload_file_content)
 
     # create a code-manifest.json file
     # no need to check if it exists, we'll always create it
@@ -102,18 +110,37 @@ def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper):
                     {
                         "type": "vulnerable-code",
                         "path": vulnerable_file,
+                        "model-name": ai_helper.model_name,
+                        "validated-by-human": {
+                            "reviewed-by-human": False,
+                            "notes": None,
+                            "valid": None,
+                        },
+                        "file-content": vulnerable_file_content,
                     },
                     {
                         "type": "secure-code",
                         "path": secure_file,
+                        "model-name": ai_helper.model_name,
+                        "validated-by-human": {
+                            "reviewed-by-human": False,
+                            "notes": None,
+                            "valid": None,
+                        },
+                        "file-content": secure_file_content,
                     },
                     {
                         "type": "payload",
                         "path": payload_file,
+                        "model-name": ai_helper.model_name,
+                        "validated-by-human": {
+                            "reviewed-by-human": False,
+                            "notes": None,
+                            "valid": None,
+                        },
+                        "file-content": payload_file_content,
                     },
                 ],
-                "validated-by-human": False,
-                "human-validation-notes": None,
             },
             f,
             indent=4,
