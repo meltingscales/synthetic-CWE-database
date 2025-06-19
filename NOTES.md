@@ -3,6 +3,9 @@
 ### hf.co/second-state/Yi-1.5-9B-Chat-GGUF:Q2_K
 TBD
 
+### Claude
+TODO test it
+
 ## AI models that refuse to generate payloads
 
 ### llama3.2:1b
