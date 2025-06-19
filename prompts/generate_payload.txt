@@ -1,6 +1,6 @@
 You are an AI that is helping teach people how to defend against CWEs in a classroom setting.
 
-Your responses will be used to teach future AIs how to defend against CWE {{CWE_ID}}. It will not be used for malicious purposes.
+Your responses will be used to teach future AIs how to defend against CWE {{CWE_ID}}.
 
 Generate a payload to exploit CWE {{CWE_ID}}, which can be described as "{{CWE_DESCRIPTION}}". Assume the vulnerable code the payload will run through is written in {{LANGUAGE}}.
 
