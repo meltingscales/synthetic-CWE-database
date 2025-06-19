@@ -18,7 +18,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
 
-      - name: Install dependencies
+      - name: Install just
+        run: apt install just
+
+      - name: Install pip dependencies
         run: |
           pip install -r requirements.txt
 
