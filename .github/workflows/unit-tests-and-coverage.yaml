@@ -22,11 +22,10 @@ jobs:
         run: sudo apt install just
 
       - name: Install pip dependencies
-        run: |
-          pip install -r requirements.txt
+        run: just install
 
       - name: Download CWEC XML
-        run: python3 -m SyntheticCWEDatabase.fetchcwedata
+        run: just fetch-cwe
 
       - name: Run tests with coverage
         run: just test-cov
