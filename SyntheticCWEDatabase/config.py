@@ -1,5 +1,9 @@
 import os
 from dotenv import dotenv_values
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
 
 cwec_output_folder = "ephemeral-data/cwe"
 cwec_xml_file_name = "cwec_latest.xml"

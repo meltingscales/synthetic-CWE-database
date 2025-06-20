@@ -23,8 +23,8 @@ fetch-cwe:
     python3 -m SyntheticCWEDatabase.fetchcwedata
 
 # Generate code examples for a specific CWE
-generate-cwe cwe_id="79" language="python":
-    python3 -m SyntheticCWEDatabase --generate-data --cwe-id {{cwe_id}} --language {{language}}
+generate-cwe cwe_id="79" language="python" model_name="llama3.2:1b":
+    python3 -m SyntheticCWEDatabase --generate-data --cwe-id {{cwe_id}} --language {{language}} --ai-model {{model_name}}
 
 # Clean up generated files
 clean:

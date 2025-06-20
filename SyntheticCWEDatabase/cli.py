@@ -2,7 +2,7 @@ import os
 import argparse
 from SyntheticCWEDatabase.cwe_data_generator import generate_one_cwe
 from SyntheticCWEDatabase.aihelper import AIHelper, AIHelperDummy
-from SyntheticCWEDatabase.save_to_mongodb import save_to_mongodb
+from SyntheticCWEDatabase.save_to_mongodb import save_all_to_mongodb
 from SyntheticCWEDatabase.config import generated_cwes_output_folder
 import shutil
 
@@ -26,7 +26,7 @@ def cli_main():
     )
     parser.add_argument("--cwe-id", type=int, help="CWE ID to generate")
     parser.add_argument("--language", type=str, help="Language to generate")
-    parser.add_argument("--ai-model", type=str, help="AI model to use")
+    parser.add_argument("--ai-model", type=str, help="ollama AI model name to use")
     parser.add_argument("--dummy-ai", action="store_true", help="Use dummy AI")
     parser.add_argument(
         "--number-of-cwes", type=int, default=1, help="Number of CWEs to generate"
@@ -56,7 +56,7 @@ def cli_main():
         return
 
     if args.save_to_mongodb:
-        save_to_mongodb()
+        save_all_to_mongodb()
         return
 
     if args.destroy_generated_data:

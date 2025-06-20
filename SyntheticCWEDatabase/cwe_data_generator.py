@@ -8,10 +8,11 @@ from SyntheticCWEDatabase.aihelper import AIHelper
 import os
 import json
 import uuid
+import logging
 
 
 def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper) -> str:
-    print(f"Generating CWE-{cwe_id}")
+    logging.info(f"Generating CWE-{cwe_id} in {language}")
 
     xml_helper = CWECXMLHelper(cwec_xml_file_path)
 
@@ -112,6 +113,7 @@ def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper) -> str:
                         "model-name": ai_helper.model_name,
                         "validated-by-human": {
                             "reviewed-by-human": False,
+                            "refusal-to-generate": None,
                             "notes": None,
                             "valid": None,
                         },
@@ -123,6 +125,7 @@ def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper) -> str:
                         "model-name": ai_helper.model_name,
                         "validated-by-human": {
                             "reviewed-by-human": False,
+                            "refusal-to-generate": None,
                             "notes": None,
                             "valid": None,
                         },
@@ -134,6 +137,7 @@ def generate_one_cwe(cwe_id: int, language: str, ai_helper: AIHelper) -> str:
                         "model-name": ai_helper.model_name,
                         "validated-by-human": {
                             "reviewed-by-human": False,
+                            "refusal-to-generate": None,
                             "notes": None,
                             "valid": None,
                         },
