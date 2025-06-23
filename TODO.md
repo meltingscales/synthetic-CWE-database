@@ -7,3 +7,6 @@
 - research white papers on llms and code generation, quality, and vulnerabilities. do they use syntax trees versus tokenizers?
 - use mlabonne abliteration on mixtral
 - find an abliterated code model
+- specifically use these models
+  - hf.co/DavidAU/Magistral-Small-2506-Reasoning-24B-NEO-MAX-Imatrix-GGUF:IQ4_XS-imat
+  - hf.co/unsloth/Magistral-Small-2506-GGUF:IQ4_XS
