@@ -5,3 +5,4 @@
 - upload synthetic and hand-picked datasets to OpenML, after I get MongoDB working
 - Build a web frontend to MongoDB that lets humans classify the synthetic data
 - research white papers on llms and code generation, quality, and vulnerabilities. do they use syntax trees versus tokenizers?
+- use mlabonne alliteration on mixtral
