@@ -21,7 +21,9 @@ class MongoHelper:
 
         # check if the code-example-uuid already exists
         if self.lookup_one_code_folder(obj["code-example-uuid"]):
-            logging.info(f"Code example {obj['code-example-uuid']} already exists, skipping")
+            logging.info(
+                f"Code example {obj['code-example-uuid']} already exists, skipping"
+            )
             return
 
         self.collection.insert_one(obj)
@@ -34,5 +36,7 @@ if __name__ == "__main__":
 
     guid = "bf36e10b-7582-4b57-889c-34b13eaa649d"
     mongo_helper = MongoHelper()
-    mongo_helper.save_one_code_folder(f"./ephemeral-data/generated-cwes/CWE-79/{guid}.code/")
+    mongo_helper.save_one_code_folder(
+        f"./ephemeral-data/generated-cwes/CWE-79/{guid}.code/"
+    )
     print(mongo_helper.lookup_one_code_folder(f"{guid}") is not None)

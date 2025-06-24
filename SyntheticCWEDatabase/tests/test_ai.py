@@ -6,8 +6,6 @@ import unittest
 import os
 
 
-# allow failure of tests
-@unittest.expectedFailure
 class TestAI(unittest.TestCase):
 
     def setUp(self):
@@ -17,8 +15,12 @@ class TestAI(unittest.TestCase):
             self.ai_helper = AIHelperDummy(model_name="dummy")
             print("Using dummy AI")
         else:
-            self.ai_helper = AIHelper(model_name=config["MODEL_NAME"])
-            print(f"Using AI model: {self.ai_helper.model_name}")
+            self.ai_helper = AIHelper(
+                model_name=config["MODEL_NAME"], model_api_url=config["MODEL_API_URL"]
+            )
+            print(
+                f"Using AI model: {self.ai_helper.model_name} at API URL: {self.ai_helper.model_api_url}"
+            )
 
     @unittest.skipIf(
         config["USE_DUMMY_AI"] == "true",

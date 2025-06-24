@@ -2,7 +2,7 @@ import os
 import argparse
 from SyntheticCWEDatabase.cwe_data_generator import generate_one_cwe
 from SyntheticCWEDatabase.aihelper import AIHelper, AIHelperDummy
-from SyntheticCWEDatabase.save_to_mongodb import save_all_to_mongodb
+from SyntheticCWEDatabase.MongoHelper import MongoHelper
 from SyntheticCWEDatabase.config import generated_cwes_output_folder
 import shutil
 
@@ -56,7 +56,8 @@ def cli_main():
         return
 
     if args.save_to_mongodb:
-        save_all_to_mongodb()
+        # save_all_to_mongodb()
+        raise NotImplementedError("save_to_mongodb not implemented")
         return
 
     if args.destroy_generated_data:
